@@ -13,6 +13,7 @@ const { layouts } = require("chart.js");
 const schemas = {
   customers: Customer,
   commonschemas: CommonSchema,
+  invoices: Invoice,
 };
 
 router.get("/createCustomerTable", async (req, res) => {
