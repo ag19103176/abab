@@ -687,31 +687,20 @@ function App() {
                       <button className="cancel" onClick={handleCancel}>
                         Cancel
                       </button>
-                      {identify === "1" && (
-                        <button
-                          className="generate-button"
-                          onClick={
-                            graphEdit
+                      <button
+                        className="generate-button"
+                        onClick={
+                          identify === "1"
+                            ? graphEdit
                               ? handleGenerateEditGraph
                               : handleGenerateGraphClick
-                          }
-                        >
-                          {graphEdit ? "Edit Graph" : "Create"}
-                        </button>
-                      )}
-
-                      {identify === "2" && (
-                        <button
-                          className="generate-button"
-                          onClick={
-                            graphEdit
-                              ? handleGenerateEditCount
-                              : handleGenerateCount
-                          }
-                        >
-                          {graphEdit ? "Edit Count" : "Create"}
-                        </button>
-                      )}
+                            : graphEdit
+                            ? handleGenerateEditCount
+                            : handleGenerateCount
+                        }
+                      >
+                        {graphEdit ? "Edit" : "Create"}
+                      </button>
                     </div>
                   </div>
                 </div>
