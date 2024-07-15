@@ -1,5 +1,4 @@
 import React from "react";
-// import "./abc.css";
 import "../Graph/toggle.css";
 import "./card.css";
 import PieChart from "../Graph/pieChart";

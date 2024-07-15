@@ -1,5 +1,6 @@
 import React from "react";
-
+import "./dataDisplay.css";
+import "../Graph/toggle.css";
 const Axes = ({
   xAxisShowLabel,
   handleshowlabel,
@@ -20,7 +21,7 @@ const Axes = ({
     <div className="axes">
       <div className="form-group">
         <h4>X-Axis</h4>
-        <div>
+        <div className="showLabel">
           <label className="label">Show Label</label>
           <label className="switch">
             <input
@@ -49,25 +50,32 @@ const Axes = ({
 
         <div>
           <label>Show Lines and Marks</label>
-          {angleOptions.map((option, index) => (
-            <div key={index}>
-              <input
-                type="radio"
-                id={index}
-                name="angleOption"
-                value={option}
-                checked={setxradioshow === option}
-                onChange={(e) => handleradioangle(e.target.value)}
-              />
-              <label>{option}</label>
-            </div>
-          ))}
+          <div>
+            {angleOptions.map((option, index) => (
+              <label
+                key={index}
+                className={`radio-label ${
+                  setxradioshow === option ? "active" : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="angleOption"
+                  value={option}
+                  checked={setxradioshow === option}
+                  onChange={(e) => handleradioangle(e.target.value)}
+                  className="radio-input"
+                />
+                {option}
+              </label>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="form-group">
+      <div>
         <h4>Y-Axis</h4>
-        <div>
+        <div className="showLabel">
           <label className="label">Show Label</label>
           <label className="switch">
             <input
@@ -92,21 +100,30 @@ const Axes = ({
           </div>
         )} */}
       </div>
-      <div className="form-group">
-        <label>Show Lines and Marks</label>
-        {yangleOptions.map((xoption, index) => (
-          <div key={index}>
-            <input
-              type="radio"
-              id={index}
-              name="yangleOption"
-              value={xoption}
-              checked={setyradioshow === xoption}
-              onChange={(e) => handleyradioangle(e.target.value)}
-            />
-            <label>{xoption}</label>
-          </div>
-        ))}
+      <div>
+        <div>
+          <label>Show Lines and Marks</label>
+        </div>
+        <div>
+          {yangleOptions.map((xoption, index) => (
+            <label
+              key={index}
+              className={`radio-label ${
+                setyradioshow === xoption ? "active" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="yangleOption"
+                value={xoption}
+                checked={setyradioshow === xoption}
+                onChange={(e) => handleyradioangle(e.target.value)}
+                className="radio-input"
+              />
+              {xoption}
+            </label>
+          ))}
+        </div>
       </div>
     </div>
   );

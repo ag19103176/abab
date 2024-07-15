@@ -274,26 +274,6 @@ router.patch("/saveGraph", async (req, res) => {
   }
 });
 
-// router.patch("/saveGraph", async (req, res) => {
-//   try {
-//     // const validatedData = await saveSchema.validateAsync(req.body);
-//     // console.log("Validation successful:", validatedData);
-//     const data = req.body;
-//     const latestGraph = await CommonSchema.findOne({});
-//     const { _id } = latestGraph;
-//     const graph = [...latestGraph.graph, data];
-//     const response = await CommonSchema.findByIdAndUpdate(_id, {
-//       graph,
-//     });
-//     res.send({ response });
-//   } catch (err) {
-//     console.error("Error in saving graph data:", err.message);
-//     res.status(400).send({
-//       error: err.details ? err.details.map((err) => err.message) : err.message,
-//     });
-//   }
-// });
-
 router.get("/getGraph", async (req, res) => {
   try {
     const data = await CommonSchema.find({});

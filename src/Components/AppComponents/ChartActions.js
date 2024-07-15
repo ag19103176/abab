@@ -1,38 +1,90 @@
 import React, { useState } from "react";
 import editIcon from "../../assets/edit.png";
 import deleteIcon from "../../assets/delete.png";
-import "../Graph/toggle.css";
+import editRed from "../../assets/editRed.png";
+import deleteRed from "../../assets/deleteRed.png";
 import "./card.css";
 
 const ChartActions = ({ d, handleEdit, handleEditCount, handleDelete }) => {
-  const [popUp, setpopup] = useState(false);
+  const [popUp, setPopup] = useState(false);
+  const [isEditHovered, setIsEditHovered] = useState(false);
+  const [isEditSelected, setIsEditSelected] = useState(false);
+  const [isDeleteHovered, setIsDeleteHovered] = useState(false);
+  const [isDeleteSelected, setIsDeleteSelected] = useState(false);
+
   const handlePopUp = () => {
-    setpopup(true);
+    setPopup(true);
   };
+
   const hidePopUp = () => {
-    setpopup(false);
+    setPopup(false);
+    setIsEditHovered(false);
+    setIsEditSelected(false);
+    setIsDeleteHovered(false);
+    setIsDeleteSelected(false);
   };
+
+  const handleEditClick = () => {
+    setIsEditSelected(true);
+    setIsEditHovered(false); // Reset hover state
+    setIsDeleteSelected(false); // Deselect delete
+    handleEdit(d);
+  };
+
+  const handleEditCountClick = () => {
+    setIsEditSelected(true);
+    setIsEditHovered(false); // Reset hover state
+    setIsDeleteSelected(false); // Deselect delete
+    handleEditCount(d);
+  };
+
+  const handleDeleteClick = () => {
+    setIsDeleteSelected(true);
+    setIsDeleteHovered(false); // Reset hover state
+    setIsEditSelected(false); // Deselect edit
+    handlePopUp();
+  };
+
   return (
     <>
       <div
-        onClick={() =>
-          d.chartBasic === "1" ? handleEdit(d) : handleEditCount(d)
-        }
+        onClick={d.chartBasic === "1" ? handleEditClick : handleEditCountClick}
+        onMouseEnter={() => setIsEditHovered(true)}
+        onMouseLeave={() => setIsEditHovered(false)}
       >
-        <img src={editIcon} alt="Edit Icon" className="source-icon" />
+        <img
+          src={isEditSelected ? editRed : isEditHovered ? editRed : editIcon}
+          alt="Edit Icon"
+          className="source-icon"
+        />
       </div>
-      <div onClick={handlePopUp}>
-        <img src={deleteIcon} alt="Delete Icon" className="source-icon" />
+      <div
+        onClick={handleDeleteClick}
+        onMouseEnter={() => setIsDeleteHovered(true)}
+        onMouseLeave={() => setIsDeleteHovered(false)}
+      >
+        <img
+          src={
+            isDeleteSelected
+              ? deleteRed
+              : isDeleteHovered
+              ? deleteRed
+              : deleteIcon
+          }
+          alt="Delete Icon"
+          className="source-icon"
+        />
       </div>
       {popUp && (
-        <div className="box">
-          <div className="modal-container">
-            <div className="modal-content">
-              <p>You sure you wanna delete?</p>
+        <div className="delete-popup">
+          <div className="delete-up">
+            <h3 className="dash">Delete Dashlet </h3>
+            <p>You sure you wanna delete this dashlet?</p>
+            <div className="candlt">
               <button className="cancel" onClick={hidePopUp}>
                 Cancel
               </button>
-              <button className="cancel" onClick={() => handleDelete(d._id)}>
+              <button className="dlt" onClick={() => handleDelete(d._id)}>
                 Confirm
               </button>
             </div>

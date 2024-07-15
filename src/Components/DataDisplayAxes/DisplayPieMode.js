@@ -44,36 +44,20 @@ const DisplayMode = ({
         </div>
         <div>
           {displayOptions.map((option, index) => (
-            // <div key={index}>
-            //   <input
-            //     type="radio"
-            //     id={setSelPer}
-            //     name="displayOption"
-            //     value={option}
-            //     checked={setSelPer === option}
-            //     onChange={(e) => selectPercentage(e.target.value)}
-            //   />
-            //   <label>{option}</label>
-            // </div>
-            <div key={index} className="radio-button-wrapper">
+            <label
+              key={index}
+              className={`radio-label ${setSelPer === option ? "active" : ""}`}
+            >
               <input
                 type="radio"
-                id={index}
                 name="displayOption"
                 value={option}
                 checked={setSelPer === option}
                 onChange={(e) => selectPercentage(e.target.value)}
                 className="radio-input"
               />
-              <label
-                htmlFor={index}
-                className={`radio-label ${
-                  setSelPer === option ? "active" : ""
-                }`}
-              >
-                {option}
-              </label>
-            </div>
+              {option}
+            </label>
           ))}
         </div>
       </div>

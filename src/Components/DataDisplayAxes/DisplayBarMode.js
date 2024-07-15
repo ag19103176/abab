@@ -78,36 +78,22 @@ const DisplayBarMode = ({
             </div>
             <div>
               {displayOptions.map((option, index) => (
-                // <div key={index}>
-                //   <input
-                //     type="radio"
-                //     id={index}
-                //     name="displayOption"
-                //     value={option}
-                //     checked={setradioshow === option}
-                //     onChange={(e) => handleRadioShowValues(e.target.value)}
-                //   />
-                //   <label>{option}</label>
-                // </div>
-                <div key={index} className="radio-button-wrapper">
+                <label
+                  key={index}
+                  className={`radio-label ${
+                    setradioshow === option ? "active" : ""
+                  }`}
+                >
                   <input
                     type="radio"
-                    id={index}
                     name="displayOption"
                     value={option}
                     checked={setradioshow === option}
                     onChange={(e) => handleRadioShowValues(e.target.value)}
                     className="radio-input"
                   />
-                  <label
-                    htmlFor={index}
-                    className={`radio-label ${
-                      setradioshow === option ? "active" : ""
-                    }`}
-                  >
-                    {option}
-                  </label>
-                </div>
+                  {option}
+                </label>
               ))}
             </div>
           </div>

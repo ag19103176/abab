@@ -10,13 +10,13 @@ import ChartCard from "./Components/AppComponents/ChartCard.js";
 import sourceIcon from "./assets/source.png";
 import graphIcon from "./assets/graph.png";
 import customer from "./assets/customer.png";
-import invoice from "./assets/invoice.png";
 import dashlet from "./assets/dashlet.png";
 import refreshIcon from "./assets/refresh.png";
 import bar from "./assets/bar.png";
 import reorderIcon from "./assets/reorder.png";
 import pieBlack from "./assets/pieBlack.png";
 import tick from "./assets/tick.png";
+import tickRed from "./assets/tickRed.png";
 import numericBlack from "./assets/numericBlack.png";
 import lineBlack from "./assets/lineBlack.png";
 import sum from "./assets/sum.png";
@@ -93,6 +93,7 @@ function App() {
   const handleRefreshClick = (val) => {
     setRefreshToggle(!refreshToggle);
     setRefresh(val);
+
     setInterval(() => {
       setGraph(!graph);
     }, val * 1000);
@@ -516,8 +517,6 @@ function App() {
         `http://localhost:8000/api/updateGraphPositions/${objid}`,
         updatedGraphs
       );
-      console.log("ff", layout);
-      console.log("res", res);
     } catch (error) {
       console.error("Error saving layout:", error);
     }
@@ -631,33 +630,43 @@ function App() {
               <div className="popup">
                 <label>Auto Refresh</label>
                 <div
-                  className="popup-option"
+                  className={`popup-option ${refresh === 0 ? "active" : ""}`}
                   onClick={() => handleRefreshClick(0)}
                 >
-                  <img src={tick} alt="Refresh Icon" className="tick-icon" />
+                  <img
+                    src={refresh === 0 ? { tickRed } : { tick }}
+                    className="tick-icon"
+                  />
                   Off
                 </div>
                 <div
-                  className="popup-option"
+                  className={`popup-option ${refresh === 5 ? "active" : ""}`}
                   onClick={() => handleRefreshClick(5)}
                 >
-                  <img src={tick} alt="Refresh Icon" className="tick-icon" />5
-                  minutes
+                  <img
+                    src={refresh === 5 ? { tickRed } : { tick }}
+                    className="tick-icon"
+                  />
+                  5 minutes
                 </div>
                 <div
-                  className="popup-option"
+                  className={`popup-option ${refresh === 10 ? "active" : ""}`}
                   onClick={() => handleRefreshClick(10)}
                 >
-                  {" "}
-                  <img src={tick} alt="Refresh Icon" className="tick-icon" />
+                  <img
+                    src={refresh === 10 ? { tickRed } : { tick }}
+                    className="tick-icon"
+                  />
                   10 minutes
                 </div>
                 <div
-                  className="popup-option"
+                  className={`popup-option ${refresh === 15 ? "active" : ""}`}
                   onClick={() => handleRefreshClick(15)}
                 >
-                  {" "}
-                  <img src={tick} alt="Refresh Icon" className="tick-icon" />
+                  <img
+                    src={refresh === 15 ? { tickRed } : { tick }}
+                    className="tick-icon"
+                  />
                   15 minutes
                 </div>
               </div>
@@ -715,7 +724,10 @@ function App() {
 
                     <label className="select-heading">Dashlet Name</label>
                     <div>
-                      <input></input>
+                      <input
+                        style={{ width: "500px", height: "35px" }}
+                        placeholder="Enter dashlet title"
+                      ></input>
                     </div>
                   </div>
                 </div>

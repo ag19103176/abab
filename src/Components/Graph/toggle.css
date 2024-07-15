@@ -201,10 +201,11 @@ input:checked+.slider:before {
 .pagination-controls button:hover:not(:disabled) {
   background-color: #EE5566;
 }
-.radio-button-wrapper {
-  display: inline-block;
-  margin: 5px;
-  /* width: 170px; */
+.radio-group {
+  display: inline-flex;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid transparent;
 }
 
 .radio-input {
@@ -213,16 +214,29 @@ input:checked+.slider:before {
 
 .radio-label {
   padding: 10px 20px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
   cursor: pointer;
   background-color: white;
   color: black;
-  transition: background-color 0.3s, color 0.3s;
+  transition: border-color 0.3s, color 0.3s;
+  border: 2px solid #ccc;
+  border-right: none;
+  border-radius: 0;
+}
+
+.radio-label:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.radio-label:last-child {
+  border-right: 2px solid #ccc;
+  border-radius: 0 8px 8px 0;
 }
 
 .radio-label.active {
-  /* background-color: red; */
   color: black;
   border-color: red;
+}
+
+.radio-label.active+.radio-label {
+  border-left-color: red;
 }

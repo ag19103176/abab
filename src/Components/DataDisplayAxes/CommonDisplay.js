@@ -153,20 +153,20 @@ const DataDisplayComponent = ({
           className={`data-display ${mode === "data" ? "active" : ""}`}
           onClick={() => handleModeChange("data")}
         >
-          Data
+          Input
         </div>
         <div
           className={`data-display ${mode === "display" ? "active" : ""}`}
           onClick={() => handleModeChange("display")}
         >
-          Display
+          View
         </div>
         {type !== "1" && (
           <div
             className={`data-display ${mode === "axes" ? "active" : ""}`}
             onClick={() => handleModeChange("axes")}
           >
-            Axes
+            Reference Links
           </div>
         )}
       </div>

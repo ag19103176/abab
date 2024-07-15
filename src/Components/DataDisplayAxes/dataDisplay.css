@@ -11,6 +11,7 @@
   border-bottom: 2px solid transparent;
   /* Initially transparent border */
 }
+
 /* 
 .data-display {
   cursor: pointer;
@@ -29,32 +30,36 @@
 .data-display.active {
   border-color: black;
 } */
- .button-container {
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
-   width: 100%;
-   padding: 10px 0;
- }
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0;
+}
 
- .data-display {
-   cursor: pointer;
-   flex-grow: 1;
-   text-align: center;
-   padding: 10px;
-   margin: 0 10px;
-   font-weight: normal;
-   transition: border-color 0.3s ease, font-weight 0.3s ease;
-   border-bottom: 2px solid transparent;
-   /* Add a transparent border initially */
- }
+.data-display {
+  cursor: pointer;
+  flex-grow: 1;
+  text-align: center;
+  padding: 10px;
+  margin: 0 10px;
+  font-weight: normal;
+  transition: border-color 0.3s ease, font-weight 0.3s ease;
+  border-bottom: 2px solid transparent;
+  /* Add a transparent border initially */
+}
 
- .data-display:hover {
-   border-color: black;
- }
+.data-display:hover {
+  border-color: black;
+}
 
- .data-display.active {
-   border-color: black;
-   font-weight: bold;
-   /* Make text bold when active */
- }
+.data-display.active {
+  border-color: black;
+  font-weight: bold;
+  /* Make text bold when active */
+}
+.showLabel {
+  display: flex;
+  gap: 8px;
+}
