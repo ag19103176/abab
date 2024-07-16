@@ -18,12 +18,14 @@ import reorderIcon from "./assets/reorder.png";
 import pieBlack from "./assets/pieBlack.png";
 import tick from "./assets/tick.png";
 import tickRed from "./assets/tickRed.png";
+import addIcon from "./assets/add.png";
 import numericBlack from "./assets/numericBlack.png";
 import lineBlack from "./assets/lineBlack.png";
 import sum from "./assets/sum.png";
 import invoiceBlack from "./assets/invoiceBlack.png";
 import avg from "./assets/avg.png";
 import ticket from "./assets/ticket.png";
+import { ref } from "joi";
 const mongoose = require("mongoose");
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -90,14 +92,16 @@ function App() {
   const [yshowLineAndMarks, setyshowLineAndMarks] = useState("");
   const [refreshToggle, setRefreshToggle] = useState(false);
   const [refresh, setRefresh] = useState(0);
-
+  var refreshInterval;
   const handleRefreshClick = (val) => {
     setRefreshToggle(!refreshToggle);
     setRefresh(val);
-
-    setInterval(() => {
-      setGraph(!graph);
-    }, val * 1000);
+    if (val === 0) clearInterval(refreshInterval);
+    else
+      refreshInterval = setInterval(() => {
+        setGraph(!graph);
+      }, val * 1000);
+    console.log("dfs", val);
   };
 
   useEffect(() => {
@@ -643,7 +647,7 @@ function App() {
                   className="refresh-icon"
                 />
               ) : (
-                <div>
+                <div className={refresh === 0 ? "" : "timer"}>
                   <p className="refresh-p">{refresh}</p>
                   <img
                     src={refreshIcon}
@@ -1035,6 +1039,16 @@ function App() {
         isDraggable={isDraggable}
         breakpoints={{ lg: 100 }}
       >
+        <div
+          key="static-item"
+          className="add-card "
+          data-grid={{ x: 0, y: 0, w: 4, h: 5.7 }}
+        >
+          <a className="add-btn" onClick={handleAddButton}>
+            <img src={addIcon} className={sourceIcon} />
+          </a>
+        </div>
+
         {layout &&
           displayGraph.map((d, index) => (
             <div

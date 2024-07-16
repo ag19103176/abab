@@ -140,7 +140,15 @@
   max-width: 100%;
   align-items: center;
 }
-
+.add-card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0.5 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  min-width: 270px;
+  min-height: 230px;
+  max-width: 100%;
+}
 .react-grid-item,
 .chart-card + .react-draggable + .cssTransforms + .react-resizable {
   left: 0 !important;

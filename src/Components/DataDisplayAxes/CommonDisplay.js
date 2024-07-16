@@ -172,7 +172,15 @@ const DataDisplayComponent = ({
           className="bottom-line"
           style={{
             left:
-              mode === "display" ? "28.33%" : mode === "axes" ? "60.66%" : "0%",
+              type != "1"
+                ? mode === "display"
+                  ? "28.33%"
+                  : mode === "axes"
+                  ? "60.66%"
+                  : "0%"
+                : mode === "data"
+                ? "10%"
+                : "58.33%",
           }}
         ></div>
       </div>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import "./toggle.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const CustomPieChart = ({ data }) => {
-  // console.log(data);
+const CustomDouChart = ({ data }) => {
+  console.log(data);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 10;
 
@@ -24,14 +24,13 @@ const CustomPieChart = ({ data }) => {
 
   const options = {
     responsive: true,
-
     plugins: {
       legend: {
         display: false,
         position: "bottom",
       },
     },
-    boxWidth: 20,
+    cutout: "60%", // Adjust the size of the center hole (optional)
   };
 
   const dd = {
@@ -56,7 +55,7 @@ const CustomPieChart = ({ data }) => {
           "rgba(153, 102, 255)",
           "rgba(255, 159, 64)",
         ],
-        borderWidth: 1,
+        borderWidth: 10, // Increase the borderWidth to increase thickness
       },
     ],
   };
@@ -74,7 +73,7 @@ const CustomPieChart = ({ data }) => {
 
   return (
     <div className="chart-body">
-      <Pie data={dd} options={options} width={300} height={500} />
+      <Doughnut data={dd} options={options} width={300} height={500} />
 
       {data.chartElements.pieChart.total && (
         <div>
@@ -116,4 +115,4 @@ const CustomPieChart = ({ data }) => {
   );
 };
 
-export default CustomPieChart;
+export default CustomDouChart;
