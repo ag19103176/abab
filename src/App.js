@@ -4,6 +4,7 @@ import DataDisplayComponent from "./Components/DataDisplayAxes/CommonDisplay.js"
 import Loader from "./Components/Loader/loader.js";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import "./App.css";
+import Select from "react-select";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import ChartCard from "./Components/AppComponents/ChartCard.js";
@@ -577,6 +578,32 @@ function App() {
   const handleshowradio = (value) => {
     setRadioshowValues(value);
   };
+  const options = xyz.map((option) => ({ value: option, label: option }));
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused ? "inital" : "initial",
+      color: state.isFocused ? "white" : "initial",
+      "&:hover": {
+        backgroundColor: state.isFocused ? "inital" : "initial",
+        color: state.isFocused ? "white" : "initial",
+      },
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "red" : "initial",
+      color: state.isSelected ? "white" : "initial",
+      "&:hover": {
+        backgroundColor: state.isFocused ? "lightgrey" : "initial",
+        color: state.isSelected ? "white" : "initial",
+      },
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "initial", // Ensure initial text color for selected option
+    }),
+  };
+
   return (
     <div className="App">
       {loading && <Loader />}
@@ -725,7 +752,10 @@ function App() {
                     <label className="select-heading">Dashlet Name</label>
                     <div>
                       <input
-                        style={{ width: "500px", height: "35px" }}
+                        style={{
+                          width: "500px",
+                          height: "35px",
+                        }}
                         placeholder="Enter dashlet title"
                       ></input>
                     </div>
@@ -857,7 +887,7 @@ function App() {
                               option.id === Number(type) ? "selected" : ""
                             }`}
                             onClick={() => selectGraph(option.id)}
-                            style={{ marginRight: "10px" }} // Adjust spacing between buttons
+                            style={{ marginRight: "10px" }}
                           >
                             <img
                               src={icon}
@@ -889,10 +919,8 @@ function App() {
                       {abc.map((option, index) => {
                         let icon;
                         if (option.idc === 1) {
-                          // Assuming 1 represents "Pie Graph"
                           icon = sum;
                         } else if (option.idc === 2) {
-                          // Assuming 2 represents "Bar Graph"
                           icon = avg;
                         } else {
                           icon = lineBlack;
@@ -905,7 +933,7 @@ function App() {
                               option.idc === Number(num) ? "selected" : ""
                             }`}
                             onClick={() => selectNumeric(option.idc)}
-                            style={{ marginRight: "10px" }} // Adjust spacing between buttons
+                            style={{ marginRight: "10px" }}
                           >
                             <img
                               src={icon}
@@ -969,28 +997,19 @@ function App() {
                         />
                       )
                   )}
+
                   {["customers", "ticket", "invoices"].map((source, index) => {
                     if (selectedSource === source && identify === "2") {
                       return (
-                        <div className="select-container">
-                          <select
-                            key={index}
-                            id="ddlOptions2"
-                            className="form-control select-class input"
-                            value={dim}
-                            onChange={(e) => setDim(e.target.value)}
-                          >
-                            <option value="" disabled>
-                              Select Field
-                            </option>
-
-                            {xyz.map((option, idx) => (
-                              <option key={idx} className="option">
-                                {option}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
+                        <Select
+                          styles={customStyles}
+                          options={options}
+                          value={{
+                            label: dim === "" ? "Select a Field" : dim,
+                            value: dim === "" ? null : dim,
+                          }}
+                          onChange={(e) => setDim(e.value)}
+                        />
                       );
                     }
                   })}

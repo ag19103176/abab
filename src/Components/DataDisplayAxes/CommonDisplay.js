@@ -46,7 +46,7 @@ const DataDisplayComponent = ({
   setyradioshow,
   handleyRadioAngle,
 }) => {
-  const [mode, setMode] = useState("");
+  const [mode, setMode] = useState("data");
   const [dimensions, setDimensions] = useState([]);
   const [measures, setMeasures] = useState([]);
 
@@ -129,7 +129,6 @@ const DataDisplayComponent = ({
   };
   const handleradioangle = (value) => {
     handleRadioAngle(value);
-    console.log("sss", value);
   };
   const handleyradioangle = (value) => {
     handleyRadioAngle(value);
@@ -148,7 +147,7 @@ const DataDisplayComponent = ({
   };
   return (
     <div className="container">
-      <div className="button-container">
+      <div className="data-display-container">
         <div
           className={`data-display ${mode === "data" ? "active" : ""}`}
           onClick={() => handleModeChange("data")}
@@ -169,7 +168,15 @@ const DataDisplayComponent = ({
             Reference Links
           </div>
         )}
+        <div
+          className="bottom-line"
+          style={{
+            left:
+              mode === "display" ? "28.33%" : mode === "axes" ? "60.66%" : "0%",
+          }}
+        ></div>
       </div>
+
       {mode === "data" && dimensions && dimensions.length > 0 && (
         <div className="select-container">
           <DataModeComponent

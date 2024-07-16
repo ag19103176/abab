@@ -98,7 +98,6 @@ router.get("/getAllData", async (req, res) => {
     res.status(500).send("Error fetching data");
   }
 });
-
 router.get("/getGroup", async (req, res) => {
   try {
     const { chartSource, field1, field2 } = req.query;
