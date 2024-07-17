@@ -9,6 +9,7 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import ChartCard from "./Components/AppComponents/ChartCard.js";
 import sourceIcon from "./assets/source.png";
+import numeric from "./assets/numeric.png";
 import graphIcon from "./assets/graph.png";
 import customer from "./assets/customer.png";
 import dashlet from "./assets/dashlet.png";
@@ -25,7 +26,6 @@ import sum from "./assets/sum.png";
 import invoiceBlack from "./assets/invoiceBlack.png";
 import avg from "./assets/avg.png";
 import ticket from "./assets/ticket.png";
-import { ref } from "joi";
 const mongoose = require("mongoose");
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -503,8 +503,8 @@ function App() {
       y: graph.layout.y ? graph.layout.y * 6 : Math.floor(index / 3) * 6,
       w: graph.layout.w ? graph.layout.w : 4,
       h: graph.layout.h ? graph.layout.h : 5.7,
-      minW: 2,
-      minH: 4,
+      minW: 4,
+      minH: 5.7,
       maxW: 7,
       maxH: 7,
     }));
@@ -586,12 +586,18 @@ function App() {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
+      width: "550px",
+      height: "40px",
       backgroundColor: state.isFocused ? "inital" : "initial",
       color: state.isFocused ? "white" : "initial",
       "&:hover": {
         backgroundColor: state.isFocused ? "inital" : "initial",
         color: state.isFocused ? "white" : "initial",
       },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      width: "550px",
     }),
     option: (provided, state) => ({
       ...provided,
@@ -604,7 +610,7 @@ function App() {
     }),
     singleValue: (provided) => ({
       ...provided,
-      color: "initial", // Ensure initial text color for selected option
+      color: "initial",
     }),
   };
 
@@ -627,9 +633,9 @@ function App() {
                 Reorder Dashlet
               </button>
             </div>
-            <button className="add-button" onClick={handleAddButton}>
+            {/* <button className="add-button" onClick={handleAddButton}>
               + ADD GRAPH
-            </button>
+            </button> */}
           </div>
           <div className="right-div">
             <button
@@ -717,7 +723,7 @@ function App() {
           <div className="box">
             <div className="modal-container">
               <div className="modal-content">
-                <div className="dash">
+                <div className="dash-name">
                   <div>
                     <label className="select-heading">New Dashlet</label>
                   </div>
@@ -1041,14 +1047,22 @@ function App() {
       >
         <div
           key="static-item"
-          className="add-card "
+          className="add-card"
           data-grid={{ x: 0, y: 0, w: 4, h: 5.7 }}
         >
-          <a className="add-btn" onClick={handleAddButton}>
-            <img src={addIcon} className={sourceIcon} />
-          </a>
+          <div className="black-strip">
+            <span className="add-black">
+              <img src={numeric} alt="Pie Chart Icon" className="source-icon" />
+              New Dashlet
+            </span>
+          </div>
+          <div className="add-btn-container">
+            <a className="add-btn" onClick={handleAddButton}>
+              <img src={addIcon} className="add-icon" />
+            </a>
+          </div>
+          <div className="p">Track Stats Important To Your Business</div>
         </div>
-
         {layout &&
           displayGraph.map((d, index) => (
             <div

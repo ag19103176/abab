@@ -77,15 +77,16 @@ const ChartActions = ({ d, handleEdit, handleEditCount, handleDelete }) => {
       </div>
       {popUp && (
         <div className="delete-popup">
-          <div className="delete-up">
-            <h3 className="dash">Delete Dashlet </h3>
-            <p>You sure you wanna delete this dashlet?</p>
-            <div className="candlt">
+          <div className="popup-content">
+            <h3 className="dash">Delete Dashlet</h3>
+            <hr className="separator" />
+            <p>You Sure You Wanna Delete This Dashlet?</p>
+            <div className="button-group">
               <button className="cancel" onClick={hidePopUp}>
                 Cancel
               </button>
               <button className="dlt" onClick={() => handleDelete(d._id)}>
-                Confirm
+                Delete
               </button>
             </div>
           </div>

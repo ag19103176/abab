@@ -1,18 +1,18 @@
-.App {
+/* .App {
   font-family: sans-serif;
-  background-color: #e7e7e7;
+  background-color: #E7E7E7;
   height: 100vh;
 }
 
 * {
   margin: 0;
   padding: 0;
-}
+} */
 
-.box {
+/* .box {
   background-color: #E7E7E7;
   margin-bottom: 20px;
-}
+} */
 
 .select-class {
   width: 70%;
@@ -84,7 +84,7 @@
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: #E7E7E7;
   padding: 20px;
   border-radius: 10px;
   width: 30%;
@@ -141,13 +141,6 @@
   align-items: baseline;
 }
 
-.source-icon {
-  width: 24px;
-  margin-bottom: -5px;
-  height: 24px;
-  cursor: pointer;
-  margin-right: 10px;
-}
 .tick-icon {
   width: 18px;
   margin-bottom: -5px;
@@ -155,14 +148,6 @@
   cursor: pointer;
   margin-right: 10px;
 }
-.main-source-icon {
-  width: 24px;
-  margin-bottom: -5px;
-  height: 24px;
-  margin-right: 10px;
-  color: white;
-}
-
 .select-heading {
   font-weight: bold;
   margin-bottom: 5px;
@@ -189,12 +174,16 @@
   border-color: #ee5566;
 }
 
+.dash-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .dash {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .buttons-right {
   display: flex;
   gap: 10px;
@@ -242,10 +231,6 @@
   transition: background-color 0.3s, color 0.3s;
   position: relative;
 }
-
-/* .refresh-btn:hover {
-  background-color: red;
-} */
 
 .refresh-p {
   position: absolute;
@@ -301,9 +286,7 @@
   content: url('./assets/tick.png');
 }
 
-.tick-icon {
-  margin-right: 10px;
-}
+
 .custom {
   display: flex;
   align-items: center;
