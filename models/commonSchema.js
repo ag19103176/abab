@@ -138,6 +138,9 @@ const UserAnalyticsChartsSchema = new mongoose.Schema({
         type: String,
         default: 0,
       },
+      dashlet: {
+        type: String,
+      },
       layout: {
         x: {
           type: Number,

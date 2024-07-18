@@ -182,6 +182,7 @@ router.post("/saveGraph", async (req, res) => {
     chartBasic,
     chartType,
     chartNum,
+    dashlet,
     layout,
     chartElements,
   } = req.body;
@@ -197,6 +198,7 @@ router.post("/saveGraph", async (req, res) => {
           chartBasic,
           chartType,
           chartNum,
+          dashlet,
           layout,
           chartElements,
         },

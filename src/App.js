@@ -92,6 +92,8 @@ function App() {
   const [yshowLineAndMarks, setyshowLineAndMarks] = useState("");
   const [refreshToggle, setRefreshToggle] = useState(false);
   const [refresh, setRefresh] = useState(0);
+  const [dash, setDash] = useState("");
+
   var refreshInterval;
   const handleRefreshClick = (val) => {
     setRefreshToggle(!refreshToggle);
@@ -135,6 +137,7 @@ function App() {
     setSelectedSource(graphData.chartSource);
     setIdentify(graphData.chartBasic);
     setNum(graphData.chartNum);
+    setDash(graphData.dashlet);
     setType(graphData.chartType);
     setId(graphData._id);
     if (graphData.chartType === "1") {
@@ -184,6 +187,7 @@ function App() {
         chartBasic: identify,
         chartType: type,
         chartNum: num,
+        dashlet: dash,
         layout: layout,
         chartElements: {},
       };
@@ -253,6 +257,7 @@ function App() {
         chartBasic: identify,
         chartType: type,
         chartNum: num,
+        dashlet: dash,
         layout: layout,
         chartElements: {},
       };
@@ -290,6 +295,7 @@ function App() {
       setId("");
       setShowModal(false);
       setAddButton(false);
+      setDash("");
       setLegend(false);
       setTotal(false);
       setSelectPercentage("");
@@ -317,6 +323,7 @@ function App() {
     setSelectedSource(graphData.chartSource);
     setIdentify(graphData.chartBasic);
     setNum(graphData.chartNum);
+    setDash(graphData.dashlet);
     setId(graphData._id);
     setShowModal(true);
     setAddButton(true);
@@ -343,6 +350,7 @@ function App() {
         chartSource: selectedSource,
         chartBasic: identify,
         chartNum: num,
+        dashlet: dash,
         layout: layout,
       };
       requestData.chartElements = {
@@ -385,6 +393,7 @@ function App() {
         chartSource: selectedSource,
         chartBasic: identify,
         chartNum: num,
+        dashlet: dash,
         layout: layout,
       };
       requestData.chartElements = {
@@ -448,6 +457,7 @@ function App() {
     setGraphEdit(false);
     setSelectedSource("");
     setDim("");
+    setDash("");
     setMeasure("");
     setIdentify("");
     setType("");
@@ -581,6 +591,9 @@ function App() {
   };
   const handleshowradio = (value) => {
     setRadioshowValues(value);
+  };
+  const handleDashlet = (e) => {
+    setDash(e.target.value);
   };
   const options = xyz.map((option) => ({ value: option, label: option }));
   const customStyles = {
@@ -767,6 +780,8 @@ function App() {
                           height: "35px",
                         }}
                         placeholder="Enter dashlet title"
+                        value={dash}
+                        onChange={handleDashlet}
                       ></input>
                     </div>
                   </div>

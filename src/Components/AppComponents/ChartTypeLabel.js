@@ -7,36 +7,37 @@ import "../Graph/toggle.css";
 import "./card.css";
 
 const ChartTypeLabel = ({ d }) => {
+  console.log("data", d);
   return (
     <div className="label-black">
       {d.chartType === "1" && (
         <span>
           <img src={pie} alt="Pie Chart Icon" className="source-icon" />
-          Pie Chart
+          {d.dashlet === "" ? "Pie Chart" : d.dashlet}
         </span>
       )}
       {d.chartType === "2" && (
         <span>
           <img src={bar} alt="Bar Chart Icon" className="source-icon" />
-          Bar Chart
+          {d.dashlet === "" ? "Bar Chart" : d.dashlet}
         </span>
       )}
       {d.chartType === "3" && (
         <span>
           <img src={line} alt="Line Chart Icon" className="source-icon" />
-          Line Chart
+          {d.dashlet === "" ? "Line Chart" : d.dashlet}
         </span>
       )}
       {d.chartBasic === "2" && d.chartNum === "1" && (
         <span>
           <img src={numeric} alt="Numeric Icon" className="source-icon" />
-          Numeric
+          {d.dashlet === "" ? "Numeric" : d.dashlet}
         </span>
       )}
       {d.chartBasic === "2" && d.chartNum === "2" && (
         <span>
           <img src={numeric} alt="Numeric Icon" className="source-icon" />
-          Numeric
+          {d.dashlet === "" ? "Numeric" : d.dashlet}
         </span>
       )}
     </div>
